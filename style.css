@@ -1,23 +1,53 @@
-.container {
+body{
+    background: black;
+}
+
+.bg{
+    width: 80%;
+    background: white;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
     display: flex;
-    flex-wrap: wrap;
-    max-width: 440px; /* Adjust as needed */
+    justify-content: center;
+}
+
+
+.container{
+    background: rgb(255, 255, 255);
+    border: 0px solid rgb(68, 68, 68);
+    border-radius: 3px;
+    
+}
+
+#activity-matrix {
+    max-width: 100%;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    overflow: scroll;
+    justify-items: center;
+    transform: rotate(270deg);
 }
 
 .day {
-    width: calc(100% / 14);
-    height: 30px; /* Adjust as needed */
-    border: 1px solid #fff;
+    width: 12px;
+    height: 12px;
     box-sizing: border-box;
+    border-radius: 10%;
+    transform: rotate(180deg);
+    /* Additional styling based on activity status */
 }
 
 .active {
-    background-color: green;
+    background-color: green; /* Example: Styling for completed tasks */
+}
+
+.Newtask {
+    background-color: blue; /* Example: Styling for new tasks */
 }
 
 .inactive {
-    background-color: lightgrey;
-}
-.Newtask {
-    background-color: rgb(255, 0, 0);
+    background-color: lightgray; /* Example: Styling for inactive days */
 }
