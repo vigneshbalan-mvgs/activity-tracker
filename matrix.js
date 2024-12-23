@@ -1,20 +1,6 @@
-// Sample activity data (initially empty)
-let activityData = [];
+// matrix.js
 
-// Function to fetch activity data from localStorage or initialize if not present
-function fetchActivityData() {
-    const storedData = localStorage.getItem('activityData');
-    if (storedData) {
-        activityData = JSON.parse(storedData);
-    } else {
-        activityData = []; // Initialize empty if no data found
-    }
-}
-
-// Function to save activity data to localStorage
-function saveActivityData() {
-    localStorage.setItem('activityData', JSON.stringify(activityData));
-}
+import { activityData, fetchActivityData } from './storage.js';
 
 // Function to initialize the activity matrix
 function initializeActivityMatrix() {
@@ -82,50 +68,4 @@ function displayActivities(selectedDate) {
     }
 }
 
-// Function to add activity based on user input (using date input directly)
-function addActivity() {
-    const dateInput = document.getElementById('date-input').value;
-    if (dateInput) {
-        activityData.push({ date: dateInput, action: 'Completed task' }); // Example: Always add as 'Completed task'
-        saveActivityData(); // Save activity data to localStorage
-        initializeActivityMatrix(); // Reinitialize the activity matrix after adding activity
-    } else {
-        alert('Please select a date');
-    }
-}
-
-// Function to add activity based on user input (using activity selection panel)
-function addActivityWithSelection() {
-    const dateInput = document.getElementById('date-input').value;
-    const activitySelect = document.getElementById('activity-select');
-    const selectedActivity = activitySelect.value;
-
-    if (dateInput && selectedActivity) {
-        activityData.push({ date: dateInput, action: selectedActivity });
-        saveActivityData(); // Save activity data to localStorage
-        initializeActivityMatrix(); // Reinitialize the activity matrix after adding activity
-    } else {
-        alert('Please select a date and activity');
-    }
-}
-
-// Function to update top bar with current date and time
-function updateTopBar() {
-    const now = new Date();
-    document.getElementById('current-date').innerText = now.toDateString();
-    document.getElementById('current-time').innerText = now.toLocaleTimeString();
-}
-
-// Initial call to show loading screen and initialize activity matrix
-document.addEventListener('DOMContentLoaded', function() {
-    const loadingScreen = document.getElementById('loading-screen');
-    setTimeout(function() {
-        loadingScreen.style.display = 'none';
-        initializeActivityMatrix(); // Call function to initialize activity matrix after loading
-    }, 2000); // 2 seconds delay
-});
-
-// Initial call to update top bar
-updateTopBar();
-setInterval(updateTopBar, 1000); // Update the time every second
-r
+export { initializeActivityMatrix, selectDateAndDisplayActivity };

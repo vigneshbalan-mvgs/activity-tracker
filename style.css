@@ -1,27 +1,85 @@
-/* Custom styles for activity matrix */
+body {
+    background: black;
+}
+
+.bg {
+    width: 80%;
+    background: white;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background: rgb(255, 255, 255);
+    border: 0px solid rgb(68, 68, 68);
+    border-radius: 3px;
+}
+
 #activity-matrix {
+    max-width: 100%;
+    height: 400px;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 1px; /* Adjust gap between grid items */
+    gap: 1px;
+    overflow: scroll;
+    justify-items: center;
+    transform: rotate(270deg);
 }
 
 .day {
-    width: 16px; /* Increase or decrease as needed */
-    height: 16px; /* Increase or decrease as needed */
-    margin: 1px; /* Adjust spacing between squares */
-    border-radius: 50%; /* Makes squares circular */
-    display: inline-block; /* Ensures squares appear in a row */
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    border-radius: 10%;
+    transform: rotate(90deg);
+    cursor: pointer; /* Add cursor pointer for clickable effect */
+    transition: all 0.3s ease-in-out; /* Smooth transition for color changes */
 }
 
-/* Additional styles for activity states */
+.day:hover {
+    transform: scale(2); /* Scale up slightly on hover */
+    z-index: 999;
+}
+
 .active {
-    background-color: green; /* Example: Styling for completed tasks */
+    background-color: green;
 }
 
 .Newtask {
-    background-color: blue; /* Example: Styling for new tasks */
+    background-color: blue;
 }
 
 .inactive {
-    background-color: lightgray; /* Example: Styling for inactive days */
+    background-color: lightgray;
+}
+
+/* Loading screen styles */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    z-index: 9999; /* Ensure it's on top */
+    animation: fadeInOut 2s ease-in-out; /* Apply fade-in and fade-out animation */
+}
+
+.loading-text {
+    color: white;
+    font-size: 24px;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; } /* Start with transparency */
+    25% { opacity: 0.5; } /* Fade in quickly */
+    75% { opacity: 0.5; } /* Stay visible */
+    100% { opacity: 0; } /* Fade out */
 }
